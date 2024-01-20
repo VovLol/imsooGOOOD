@@ -4,7 +4,6 @@
     <img v-if="openImg" v-bind:src="foto" class="card-img-top" alt="...">
    <div class="card-body">
     <p class="card-text">{{msg}}</p>
-    <p class="card-text">{{msg}}</p>
    </div>
    <button v-on:click="remove" type="button" class="btn btn-primary">{{msgBtn}}</button>
   </div>
