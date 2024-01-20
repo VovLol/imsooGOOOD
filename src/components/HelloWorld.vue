@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     урфффффф
+    <button type="button" class="btn btn-primary">Primary</button>
   </div>
 </template>
 
