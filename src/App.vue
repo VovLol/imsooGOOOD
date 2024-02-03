@@ -1,15 +1,20 @@
 <template>
-  <h1>Super markat</h1>
-  <Card/>
+  <div class="container">
+  <Card>
+  <Header/>
+  </Card>  
+</div>
 </template>
 
 <script>
 import Card from './components/card.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    Card
+    Card,
+    Header
   }
 }
 </script>

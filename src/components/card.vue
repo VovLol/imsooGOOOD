@@ -1,43 +1,49 @@
 <template>
 <div class="rows">
+<slot>  </slot>
 
-  <form class="row g-3">
+  <div class="row g-3">
     <div class="col-auto">
      <label for="inputName" class="visually-hidden">Название</label>
-     <input v-model="part" type="text" class="form-control" id="staticEmail2" placeholder="Вводи">
+     <input v-model="part.PName" type="text" class="form-control" id="staticEmail2" placeholder="Вводи">
     </div>
     <div class="col-auto">
       <label for="inputPrace" class="visually-hidden">Цена</label>
-      <input v-model="price" type="text" class="form-control" id="inputPassword2" placeholder="топ">
+      <input v-model="part.Price" type="text" class="form-control" id="inputPassword2" placeholder="топ">
     </div>
     <div class="col-auto">
       <label for="inputToValue" class="visually-hidden">Кол-во</label>
-      <input v-model="volume" type="text" class="form-control" id="inputPassword2" placeholder="вводи">
+      <input v-model="part.PVolume" type="text" class="form-control" id="inputPassword2" placeholder="вводи">
     </div>
     <div class="col-auto">
      <button type="submit" v-on:click="added" class="btn btn-primary mb-3">Confirm</button>
     </div>
-  </form>
-  <button v-on:click="show" class="btn btn-primary mb-3">посмот</button>
+  </div>
 
-  <div v-if="true" class="row">
+  <button v-on:click="show" class="btn btn-primary mb-3">посмот</button>
+  <slot> </slot>
+
+  <div v-if="check" class="row">
     <ul id="array-rendering">
       <li v-for="item in product" :key="item.PName" >
-       {{ item.PName }} <br/>
-       {{ item.Price }} <br/>
-       {{ item.PVolume }} <br/>
+       {{ item.PName }}   {{ item.Price }}  {{ item.PVolume }} <br/>
       </li>
     </ul>
 
   </div>
 
-  <div v-if="true" class="row">
+  <div class="alert alert-primary" role="alert">
+  THIS product is over than 30 KG i think: {{resultSumm}}
+</div>
+
+
+  <!-- <div v-if="true" class="row">
     <ul id="array-rendering">
       <li v-for="item in test" :key="item.PName" >
       </li>
     </ul>
 
-  </div>
+  </div> -->
 
 </div>
 </template>
@@ -52,32 +58,24 @@ export default {
   },
   data(){
      return{
-      product: [
-      {
-        PName:"aaa",
-        Price:10,
-        PVolume:42
-      }
-    ],
       product: [],
-      part: "",
-      volume: 0,
-      price: 0,
+      part: Product,
       check: false,
-      test: [1, 2, 3, 4]
-     }
+     };
   },
   methods:{
     added(){
-      let p = new Product(this.part, this.price, this.volume);
-      this.product.push(p)
-      console.table(this.product[0])
+      this.product.push({...this.part})
     },
     show(){
     this.check = !this.check
-    alert(this.check)
-  }
- }
+  },
+ },
+ computed : {
+   resultSumm(){
+    return this.product.length
+    }
+   }
 }
 </script>
 
