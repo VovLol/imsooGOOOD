@@ -1,6 +1,11 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <h1>Emit test</h1>
+  </div>
+  <HelloWorld />
+  <div class="rows">
+    <button v-on:click="addAnimal" type="button" class="btn btn-primary">Butt</button>
+  </div>
 </template>
 
 <script>
@@ -10,6 +15,14 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  provide:{
+    animal: "slon"
+  },
+  methods:{
+    addAnimal(){
+      this.animal = this.animal + " " + this.animal
+    }
   }
 }
 </script>

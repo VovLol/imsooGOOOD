@@ -1,18 +1,34 @@
 <template>
-  <div class="hello">
-    урфффффф
-    <button type="button" class="btn btn-primary">Primary</button>
+  <div class="rows">
+    <div class="alert alert-danger" role="alert">
+      Message : {{ textMsg }}
+    </div>
+    <TestEmit v-on:msg="showMsg" v-model="top" />
   </div>
 </template>
 
 <script>
+import TestEmit from '@/components/TestEmit.vue'
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  components:{
+    TestEmit
+  },
+
+  data(){
+    return{
+     textMsg:'',
+    }
+  },
+  
+  methods:{
+    showMsg(e){
+     this.textMsg = "This sigma nicknam is" + `${e}`
+    }
   }
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
